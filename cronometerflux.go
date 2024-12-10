@@ -92,16 +92,24 @@ func getNutrientMap(s gocronometer.ServingRecord) map[string]nutrientInfo {
     }
 }
 
+
 // escapeTag handles escaping special characters in InfluxDB line protocol tag values
 func escapeTag(s string) string {
+    if s == "" {
+        return "unknown"
+    }
+    // Ensure we escape the entire string properly
+    s = strings.ReplaceAll(s, ",", "\\,")
     s = strings.ReplaceAll(s, "=", "\\=")
     s = strings.ReplaceAll(s, " ", "\\ ")
-    s = strings.ReplaceAll(s, ",", "\\,")
     return s
 }
 
 // escapeField handles escaping and quoting string field values
 func escapeField(s string) string {
+    if s == "" {
+        return "\"\""
+    }
     s = strings.ReplaceAll(s, "\"", "\\\"")
     return fmt.Sprintf("\"%s\"", s)
 }
@@ -110,13 +118,16 @@ func escapeField(s string) string {
 func FormatServing(serving gocronometer.ServingRecord) []string {
     var lines []string
 
-    // Create base tags using proper escaping
-    baseTags := fmt.Sprintf("food=%s,group=%s,category=%s",
-        escapeTag(serving.FoodName),
-        escapeTag(serving.Group),
-        escapeTag(serving.Category))
+    // Create base tags
+    foodName := escapeTag(serving.FoodName)
+    group := escapeTag(serving.Group)
+    category := escapeTag(serving.Category)
 
-    // Output quantity with proper field value handling
+    // Build the base tag string
+    baseTags := fmt.Sprintf("food=%s,group=%s,category=%s",
+        foodName, group, category)
+
+    // Output quantity measurement
     lines = append(lines, fmt.Sprintf("nutrition_serving,%s,nutrient=quantity value=%.3f,units=%s %d",
         baseTags,
         serving.QuantityValue,
@@ -124,11 +135,11 @@ func FormatServing(serving gocronometer.ServingRecord) []string {
         serving.RecordedTime.UnixNano()))
 
     // Output all nutrients
-    for nutrient, info := range getNutrientMap(serving) {
+    for nutrientName, info := range getNutrientMap(serving) {
         if info.value != 0 { // Skip zero values to reduce noise
             lines = append(lines, fmt.Sprintf("nutrition_nutrient,%s,nutrient=%s value=%.3f,units=%s %d",
                 baseTags,
-                escapeTag(nutrient),
+                escapeTag(nutrientName),
                 info.value,
                 escapeField(info.unit),
                 serving.RecordedTime.UnixNano()))
