@@ -32,7 +32,7 @@ func getNutrientMap(s gocronometer.ServingRecord) map[string]nutrientInfo {
         "folate":      {s.FolateUg, "µg"},
 
         // Other Vitamins
-        "vitamin_a": {s.VitaminAUI, "IU"},
+        "vitamin_a": {s.VitaminAUg, "µg"},
         "vitamin_c": {s.VitaminCMg, "mg"},
         "vitamin_d": {s.VitaminDUI, "IU"},
         "vitamin_e": {s.VitaminEMg, "mg"},
@@ -89,6 +89,9 @@ func getNutrientMap(s gocronometer.ServingRecord) map[string]nutrientInfo {
         "tyrosine":      {s.TyrosineG, "g"},
         "valine":        {s.ValineG, "g"},
         "protein":       {s.ProteinG, "g"},
+
+        // Alcohol
+        "alcohol":       {s.AlcoholG, "g"},
     }
 }
 
