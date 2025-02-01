@@ -1,11 +1,5 @@
-github.com/burke/gocronometer v1.5.1 h1:sOytn0ExYDxl2oiCy/ZKZNXSd3z5VPt6Re7gmcqdZJk=
-github.com/burke/gocronometer v1.5.1/go.mod h1:iCl7PlwIan4YZChOn83dSGGLAaKT0kUGNPd2bOCO6As=
-github.com/burke/gocronometer v1.5.2-0.20241213210330-febfdd81ccde h1:4FC+Df1MK5lcM8G45efmCcZtxJA/hmcuRWjybB4Y8A0=
-github.com/burke/gocronometer v1.5.2-0.20241213210330-febfdd81ccde/go.mod h1:iCl7PlwIan4YZChOn83dSGGLAaKT0kUGNPd2bOCO6As=
-github.com/burke/gocronometer v1.5.2-0.20241213210558-784411d9cada h1:LoaY0fY90U2JLxttnR8B0Cmirf1qJd6tNik1lnBcffM=
-github.com/burke/gocronometer v1.5.2-0.20241213210558-784411d9cada/go.mod h1:iCl7PlwIan4YZChOn83dSGGLAaKT0kUGNPd2bOCO6As=
-github.com/burke/gocronometer v1.5.2-0.20241213210828-18bcd086c67e h1:Y4u1Tvr4hf2bzuAjd841pdHUVpgvHcszf1OrVfjSCUI=
-github.com/burke/gocronometer v1.5.2-0.20241213210828-18bcd086c67e/go.mod h1:iCl7PlwIan4YZChOn83dSGGLAaKT0kUGNPd2bOCO6As=
+github.com/burke/gocronometer v1.5.3 h1:t7YgG6xiGMIi15THn+qgzlWiIlEdent0s26zijtQFPw=
+github.com/burke/gocronometer v1.5.3/go.mod h1:iCl7PlwIan4YZChOn83dSGGLAaKT0kUGNPd2bOCO6As=
 github.com/yuin/goldmark v1.4.13/go.mod h1:6yULJ656Px+3vBD8DxQVa3kxgyrAnzto9xy5taEt/CY=
 golang.org/x/crypto v0.0.0-20190308221718-c2843e01d9a2/go.mod h1:djNgcEr1/C05ACkg1iLfiJU5Ep61QUkGW8qpdssI0+w=
 golang.org/x/crypto v0.0.0-20210921155107-089bfa567519/go.mod h1:GvvjBRRGRdwPK5ydBHafDWAxML/pGHZbMvKqRZ5+Abc=
